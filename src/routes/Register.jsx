@@ -2,30 +2,33 @@ import { useContext, useState } from "react";
 import { UserContext } from "../Context/UserProvider";
 import { useNavigate } from "react-router";
 
-const Login = () => {
-  const { user, setUser, loginUser } = useContext(UserContext);
-
+const Register = () => {
   const [email, setEmail] = useState("user1@gmail.com");
   const [password, setPassword] = useState("123456");
+
+  const { registerUser } = useContext(UserContext);
 
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("procesando form..." + email + password);
+    console.log("Procesando form");
+
     try {
-      await loginUser(email, password);
-      console.log("usuario loggeado");
+      await registerUser(email, password);
       navigate("/");
     } catch (error) {
-      console.log(error.code);
+      if (error.code === "auth/email-already-in-use") {
+        alert("Este email ya está registrador");
+      } else {
+        alert("Contraseña débil");
+      }
     }
   };
 
   return (
     <>
-      <h1>Login</h1>
-
+      <h1>Registro</h1>
       <form onSubmit={handleSubmit}>
         <input
           type="email"
@@ -39,13 +42,9 @@ const Login = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit">Iniciar sesión</button>
+        <button type="submit">Registrar</button>
       </form>
-
-      <h2>{user ? "Online" : "Offline"}</h2>
-      {/* <button onClick={handleLogin}>Acceder</button> */}
     </>
   );
 };
-
-export default Login;
+export default Register;
