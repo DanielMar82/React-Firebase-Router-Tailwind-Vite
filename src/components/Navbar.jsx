@@ -23,6 +23,7 @@ const Navbar = () => {
       ) : (
         <>
           <NavLink to={"/Login"}>Login</NavLink>
+          <br />
           <NavLink to={"/Register"}>Registro</NavLink>
         </>
       )}
