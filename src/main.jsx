@@ -5,6 +5,8 @@ import App from "./App.jsx";
 import { BrowserRouter } from "react-router";
 import UserProvider from "./Context/UserProvider.jsx";
 
+import "flowbite";
+
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>

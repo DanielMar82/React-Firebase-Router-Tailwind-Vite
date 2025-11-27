@@ -7,6 +7,7 @@ import RequireAuth from "./components/RequireAuth";
 import Register from "./routes/Register";
 import { UserContext } from "./Context/UserProvider";
 import { useContext } from "react";
+import LayoutContainerForm from "./components/LayoutContainerForm";
 
 const App = () => {
   const { user } = useContext(UserContext);
@@ -30,8 +31,10 @@ const App = () => {
             </RequireAuth>
           }
         />
-        <Route path="/Login" element={<Login />} />
-        <Route path="/Register" element={<Register />} />
+        <Route path="/" element={<LayoutContainerForm />}>
+          <Route path="/Login" element={<Login />} />
+          <Route path="/Register" element={<Register />} />
+        </Route>
       </Routes>
     </>
   );

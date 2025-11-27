@@ -12,10 +12,19 @@ return {
         message: "Formato incorrecto",
     },
 
-    minLength: { 
-        value: 6, 
-        message: "Mínimo 6 carácteres" 
-    },
+    //  minLength: { 
+    //      value: 6, 
+    //      message: "Mínimo 6 carácteres" 
+    //  },
+     
+    minLength(value) { 
+            return {
+                value, 
+                message: `Mínimo ${value} carácteres` 
+            }
+    
+        },
+
 
     validateTrim:  
          (v) => {
@@ -25,9 +34,8 @@ return {
             return true
     },
     
-    validateEquals(getValues)  {
+    validateEquals(value)  {
         return {
-            equals: (v) =>
-                v === getValues("password") || "Contraseñas no coinciden",}
+            equals: (v) => v === value || "Contraseñas no coinciden",}
         }
 } }

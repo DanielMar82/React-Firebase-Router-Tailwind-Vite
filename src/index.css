@@ -1,9 +1,2 @@
-body {
-    margin: 0 auto;
-    width: 80%;
+@import "tailwindcss";
 
-}
-
-code {
-    font-family: source-code-pro, Monaco, Consolas, "Courier New", monospace
-}
