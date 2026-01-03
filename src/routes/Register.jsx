@@ -9,12 +9,14 @@ import FormError from "../components/FormError";
 import FormInput from "../components/FormInput";
 import Title from "../components/Title";
 import Button from "../components/Button";
+import ButtonLoading from "../components/ButtonLoading";
 
 const Register = () => {
   // const [email, setEmail] = useState("user1@gmail.com");
   // const [password, setPassword] = useState("123456");
 
   const { registerUser } = useContext(UserContext);
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -31,6 +33,7 @@ const Register = () => {
 
   const onSubmit = async ({ email, password }) => {
     try {
+      setLoading(true);
       await registerUser(email, password);
       navigate("/");
     } catch (error) {
@@ -40,6 +43,8 @@ const Register = () => {
       setError(code, {
         message,
       });
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -90,7 +95,7 @@ const Register = () => {
           <FormError error={errors.repassword} />
         </FormInput>
 
-        <Button text="Registrar" type="submit" />
+        <Button text={"Registrar"} type={"submit"} loading={loading} />
       </form>
     </>
   );

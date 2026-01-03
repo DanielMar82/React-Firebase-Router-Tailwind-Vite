@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getAnalytics } from "firebase/analytics";
+import { getFirestore } from "firebase/firestore/lite";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDWt3gMipU8P7u4qtXFMDb-mpzZcrOkivk",
@@ -9,12 +10,14 @@ const firebaseConfig = {
   storageBucket: "react-fb-router-tw-vite.firebasestorage.app",
   messagingSenderId: "64185408912",
   appId: "1:64185408912:web:d2a9933996f7d1e0e1e715",
-  measurementId: "G-XKSRCPT3Q5"
+  measurementId: "G-XKSRCPT3Q5",
 };
 
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
-const auth = getAuth(app)
+const auth = getAuth(app);
 
-export {auth}
+const db = getFirestore(app);
+
+export { auth, db };
