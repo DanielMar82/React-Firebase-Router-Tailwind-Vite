@@ -5,9 +5,7 @@ const FormInput = forwardRef(
     { type, placeholder, onChange, onBlur, name, label, error, children },
     ref
   ) => {
-    const errorClassLabel = error
-      ? "text-red-700 dark:text-gray-500"
-      : "text-gray-900 dark:text-gray-300";
+    const errorClassLabel = error ? "text-red-700" : "text-gray-900";
 
     const errorClassInput = error
       ? " bg-red-50 border-red-500 text-red-900 placeholder-red-700  focus:ring-red-500 focus:border-red-500  dark:bg-red-100 dark:border-red-400"
